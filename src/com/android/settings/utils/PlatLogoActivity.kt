@@ -124,14 +124,14 @@ fun RocketScreen(screenHeight: Float, screenWidth: Float) {
                                     animationSpec = tween(16)
                                 )
                                 generateNewStars(starPositions, 200, screenWidth, screenHeight)
-                                if (rocketY.value <= ((screenHeight - 300) * -1)) {
+                                if (rocketY.value <= ((screenHeight * 0.9f) * -1)) {
                                     if (rocketVisible.value) {
                                         rocketVisible.value = false
                                         showLogo.value = true
                                         coroutineScope.launch {
                                             rocketScale.animateTo(0f, animationSpec = tween(500))
-                                            logoAlpha.animateTo(1f, animationSpec = tween(1000))
-                                            logoScale.animateTo(1f, animationSpec = tween(1000))
+                                            logoAlpha.animateTo(1f, animationSpec = tween(500))
+                                            logoScale.animateTo(1f, animationSpec = tween(500))
                                         }
                                     }
                                 }

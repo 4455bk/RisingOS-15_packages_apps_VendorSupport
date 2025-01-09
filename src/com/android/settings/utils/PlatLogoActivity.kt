@@ -63,7 +63,7 @@ import kotlin.random.Random
 
 class PlatLogoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         super.onCreate(savedInstanceState)
 
         val displayMetrics = DisplayMetrics()

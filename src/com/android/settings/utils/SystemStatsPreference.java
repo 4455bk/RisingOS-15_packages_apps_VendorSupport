@@ -121,12 +121,12 @@ public class SystemStatsPreference extends LayoutPreference {
             String formattedTotal = Formatter.formatFileSize(getContext(), totalBytes);
 
             storageCircle.setProgress(percentageUsed);
-            storageAvailable.setText(formattedAvailable + " free");
+            storageAvailable.setText(formattedAvailable);
             storageTotal.setText(String.format("%s / %s used", formattedUsed, formattedTotal));
         } catch (Exception e) {
             Log.e(TAG, "Error calculating storage info", e);
             storageCircle.setProgress(0);
-            storageAvailable.setText("-- GB free");
+            storageAvailable.setText("-- GB");
             storageTotal.setText("-- GB");
         }
     }

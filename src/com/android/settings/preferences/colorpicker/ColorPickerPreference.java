@@ -33,6 +33,7 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.provider.Settings;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
@@ -112,7 +113,8 @@ public class ColorPickerPreference extends Preference implements
             // if we forgot to add android:defaultValue, default to black color
             defaultValue = Color.BLACK;
         }
-        mCurrentValue = getPersistedInt((Integer) defaultValue);
+	mCurrentValue = android.provider.Settings.System.getInt(
+        	getContext().getContentResolver(), getKey(), (Integer) defaultValue);
         mCurrentHexValue = convertToARGB((Integer) defaultValue);
         if (mAutoSummary) setSummary(mCurrentHexValue);
         onColorChanged(mCurrentValue);
@@ -229,7 +231,8 @@ public class ColorPickerPreference extends Preference implements
         mCurrentHexValue = convertToARGB(color);
         if (mAutoSummary) setSummary(mCurrentHexValue);
         setPreviewColor();
-        persistInt(color);
+	android.provider.Settings.System.putInt(
+        	getContext().getContentResolver(), getKey(), color);
         try {
             getOnPreferenceChangeListener().onPreferenceChange(this, color);
         } catch (NullPointerException e) {
